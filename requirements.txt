@@ -1,0 +1,23 @@
+numpy
+pandas
+matplotlib
+tqdm
+scikit-learn==1.3.2
+opencv-python
+albumentations
+Pillow
+requests
+pycocotools
+nuscenes-devkit
+pyquaternion
+torch
+torchvision
+timm==0.9.12
+ultralytics
+torch-geometric
+
+# NOTE:
+# Some torch-geometric dependencies (torch-scatter, torch-sparse, torch-cluster, torch-spline-conv)
+# must match your installed torch + CUDA versions. If you hit install errors, follow the official
+# PyG install guide for your specific torch/CUDA setup:
+# https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
