@@ -352,14 +352,15 @@ python results_viz.py
 
 ### OOD Injection and Detection
 
-![Detection Visualization](dete (1).png)
+<img src="dete%20(1).png" width="900">
 
 ### Context Graph Visualization
 
-![Graph Visualization](graphs_sixview (2))
+<img src="graphs_sixview%20(2).png" width="900">
 
 ### Sample OOD Augmented Images
 
-![OOD Examples](ood_grid (2))
+<img src="ood_grid%20(2).png" width="900">
+
 
 
