@@ -348,4 +348,18 @@ Crop embeddings are cached to speed up repeated runs:
 python results_viz.py
 ```
 
+## Qualitative Examples
+
+### OOD Injection and Detection
+
+![Detection Visualization](dete (1).png)
+
+### Context Graph Visualization
+
+![Graph Visualization](graphs_sixview (2))
+
+### Sample OOD Augmented Images
+
+![OOD Examples](ood_grid (2))
+
 
