@@ -33,9 +33,6 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 Image.MAX_IMAGE_PIXELS = None
 
 
-# ==========================
-# CONFIG (EDIT THESE)
-# ==========================
 
 try:
     from config.defaults import DST_DATASET as _DST
@@ -78,9 +75,6 @@ if torch.cuda.is_available():
 print("Torch:", torch.__version__, "CUDA:", torch.cuda.is_available(), "Device:", device)
 
 
-# ==========================
-# JSON + TABLE LOADING
-# ==========================
 
 def load_json(path: Path):
     return json.loads(path.read_text())
@@ -130,9 +124,6 @@ for sd in sd_rows.values():
     sample_to_ch2sd.setdefault(st, {})[ch] = sd["token"]
 
 
-# ==========================
-# EMBEDDING BACKBONE (same as your file)
-# ==========================
 
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -211,9 +202,6 @@ def embed_crops_batched(pil_img: Image.Image, boxes, sd_token: str):
     return np.stack(embs, axis=0)
 
 
-# ==========================
-# BOX HELPERS (ID/OOD)
-# ==========================
 
 def get_boxes_labels_classes_for_sd(sd_token: str):
     """
@@ -242,9 +230,6 @@ def get_boxes_labels_classes_for_sd(sd_token: str):
     return boxes, labels, classes
 
 
-# ==========================
-# GRAPH BUILDING (same logic as your build_graphs)
-# ==========================
 
 def build_graphs(split="train", knn_k=6, include_id_from_ood_frames=True):
     graphs = []
@@ -331,9 +316,6 @@ def normalize_graphs(graphs):
     return out
 
 
-# ==========================
-# VGAE (same architecture as your file)
-# ==========================
 
 class GEncoder(nn.Module):
     def __init__(self, in_dim, hid=256, z=128):
@@ -451,9 +433,6 @@ def vgae_node_scores(model_vgae: VGAE, g: GeoData):
     return (err + (1.0 - mean_sim)).detach().cpu().numpy()
 
 
-# ==========================
-# CONTEXT MAHALANOBIS (same idea as your file)
-# ==========================
 
 def neighbor_mean_features(g: GeoData):
     """
@@ -519,9 +498,6 @@ def maha2(Z, mu, sd, mu_loc, prec):
     return np.einsum("nd,dd,nd->n", d, prec, d)
 
 
-# ==========================
-# MAIN
-# ==========================
 
 def main():
     print("Building graphs …")
