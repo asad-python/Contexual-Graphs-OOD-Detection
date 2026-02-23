@@ -88,8 +88,8 @@ https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
 
 ### nuScenes Dataset
 
-You must have the nuScenes dataset available locally, You can download it from (https://www.nuscenes.org/nuscenes#download).
-
+You must have the nuScenes dataset available locally. You can download it from (https://www.nuscenes.org/nuscenes#download).
+Moreover, our single Notebook of the whole code is available in the config folder, as curreent implementation is modular.
 
 ### OOD Patch Assets
 
