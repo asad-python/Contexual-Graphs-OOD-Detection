@@ -15,10 +15,6 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 warnings.filterwarnings("ignore", category=UserWarning)
 
 
-# ======================
-# CONFIG (EDIT THESE)
-# ======================
-
 # Option A: import from your config/defaults.py (recommended)
 try:
     from config.defaults import DST_DATASET as _DST_DATASET
@@ -61,9 +57,6 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Torch: {torch.__version__} | CUDA: {torch.cuda.is_available()} | Device: {device}")
 
 
-# ======================
-# DATASET LOADING
-# ======================
 
 def load_json(p: Path):
     with open(p, "r") as f:
@@ -145,9 +138,6 @@ def pick_subset(frames, k=None, seed=13):
     return [frames[i] for i in idx[:k]]
 
 
-# ======================
-# MODELS (same families)
-# ======================
 
 to_tensor = T.ToTensor()
 
@@ -216,9 +206,6 @@ def infer_yolov8(model, pil_img):
         return xyxy, scores, "conf"
 
 
-# ======================
-# METRICS (same as notebook)
-# ======================
 
 def iou_xyxy(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     Na, Nb = a.shape[0], b.shape[0]
@@ -295,10 +282,6 @@ def compute_auroc_fpr95(scores, labels):
     fpr95 = float(fpr[idx[0]]) if idx.size else float("nan")
     return au, fpr95
 
-
-# ======================
-# EVAL (same logic)
-# ======================
 
 def evaluate_dataset(frames, model_name, model, infer_fn, compute_ood_roc=True):
     """
@@ -496,9 +479,6 @@ def camera_average(res):
     }
 
 
-# ======================
-# MAIN RUN (same spirit)
-# ======================
 
 def main():
     assert NUSCENES_OOD_ROOT.exists(), (
