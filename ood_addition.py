@@ -1,14 +1,4 @@
-"""
-ood_addition.py
 
-1) Clone nuScenes-mini dataset: SRC -> DST
-2) Paste OOD object patches into ALL 6 cameras
-3) Save OOD 2D boxes as detection_novel.json in DST/v1.0-mini/
-4) Project nuScenes GT 3D boxes to 2D and save as detection_id.json in DST/v1.0-mini/
-
-IMPORTANT:
-- Change paths in config/defaults.py (placeholders)
-"""
 
 from __future__ import annotations
 
@@ -23,9 +13,7 @@ from nuscenes.nuscenes import NuScenes
 from nuscenes.utils.data_classes import Box
 from nuscenes.utils.geometry_utils import view_points
 
-# -----------------------
-# CONFIG (import yours)
-# -----------------------
+
 try:
     from config.defaults import SRC_DATASET, DST_DATASET, ASSETS_DIR
 except Exception:
@@ -34,10 +22,6 @@ except Exception:
     DST_DATASET = "WRITE_DESTINATION_DATASET_PATH_HERE"
     ASSETS_DIR  = "WRITE_ASSETS_DIRECTORY_PATH_HERE"
 
-
-# -----------------------
-# SAME SETTINGS AS YOUR SCRIPT
-# -----------------------
 ALL_CAM_CHANNELS = [
     "CAM_FRONT",
     "CAM_FRONT_LEFT",
@@ -54,9 +38,6 @@ random.seed(SEED)
 np.random.seed(SEED)
 
 
-# -----------------------
-# AUGMENT (SAME AS YOUR SCRIPT)
-# -----------------------
 augment = A.Compose(
     [
         A.RandomScale(scale_limit=(0.3, 0.6), p=1.0),
