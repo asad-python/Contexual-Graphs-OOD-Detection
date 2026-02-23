@@ -5,9 +5,6 @@ import albumentations as A
 import cv2
 
 
-# ------------------------------------------------------------
-# Augmentation (KEPT SAME as contexual_graphs_(1).py)
-# ------------------------------------------------------------
 augment = A.Compose(
     [
         A.RandomScale(scale_limit=(0.3, 0.6), p=1.0),
@@ -19,9 +16,6 @@ augment = A.Compose(
 )
 
 
-# ------------------------------------------------------------
-# Paste function
-# ------------------------------------------------------------
 def paste_object(img_bgr, obj_rgba, lower_half_only=True):
     """
     Paste a single RGBA object patch into a BGR camera image.
